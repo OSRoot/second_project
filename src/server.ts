@@ -31,9 +31,22 @@ app.post('/create', (req:Request, res:Response):void=>{
 
 
 app.get('/', (req:Request, res:Response):void=>{
+    
+    // you could send json object to the client
     res.status(200).json({
-        message:"Hello world"
+    message:"Hello world"
     });
+    
+
+    // ########################################
+
+    // you can send an entire page to the user
+    // res.send(`<html>
+    // <title>From server to client</title>
+    // <body>
+    // <h1>This page is sent to the client via the server</h1>
+    // </body>
+    // </html>`)
 });
 
 
@@ -42,3 +55,5 @@ app.get('/', (req:Request, res:Response):void=>{
 app.listen(port, ():void=>{
     console.log(`Server started at : http://127.0.0.1:${port}`);
 })
+
+// Note: all the functions used here should be separated in their own handler files

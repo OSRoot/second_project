@@ -4,7 +4,7 @@
   "description": "storefront api",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/server.ts" 
+    "dev": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -17,14 +17,18 @@
   },
   "homepage": "https://github.com/OSRoot/second_project#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "pg": "^8.8.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.15",
+    "@types/jsonwebtoken": "^9.0.0",
     "@types/node": "^18.11.18",
     "@types/pg": "^8.6.6",
     "nodemon": "^2.0.20",
