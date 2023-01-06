@@ -19,4 +19,8 @@ const Client = new Pool({
     password:POSTGRES_PASSWORD
 });
 
-export default Client;
+
+
+export default 
+    Client
+    

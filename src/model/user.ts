@@ -24,7 +24,7 @@ export class UserClass{
 
     async create(user:User):Promise<User>{
         const _conn = await Client.connect();
-        const _sql = "INSTERT INTO users (username, password) VALUES (($1), ($2)) RETURNING *;";
+        const _sql = "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *;";
         const _hash = bcrypt.hashSync(user.password + pepper , saltRound);
         const _result = await _conn.query(_sql, [user.username, _hash]);
         _conn.release();
@@ -47,6 +47,21 @@ export class UserClass{
         const _result = await _conn.query(_sql, [user.username, _hash, user.id]);
         _conn.release();
         return _result.rows[0];
+    };
+
+    async oneUser(username:string):Promise<User>{
+        try {
+            const _conn = await Client.connect();
+            const _sql = `SELECT * FROM users Where username=($1)`;;
+            const _result = await _conn.query(_sql,[username]);
+            _conn.release();
+            return _result.rows[0]
+        } catch (error) {
+            console.log(error);
+            
+            throw error
+        }
+
     }
 };
 

@@ -1,7 +1,7 @@
 import Client from "../client";
 
 // define the Product type here
-export type Product={
+export type Product = {
     id?:string;
     name:string;
     price:string;
@@ -9,7 +9,7 @@ export type Product={
 
 
 // implement the Product Class here:
-export class ProductClass{
+export class ProductClass {
     async index():Promise<Product|any[]>{
         const _conn = await Client.connect();
         const _sql = "SELECT * FROM products;";

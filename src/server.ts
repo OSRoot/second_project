@@ -1,52 +1,21 @@
 import express, { Request, Response, Application } from 'express';
-
+import usersRouter from './handler/users';
 const app: Application =express();
 const port:number= 7000;
-
+require('dotenv').config();
 // add json parser to parse the req.body
 // app.use(express.json())
 
-
-
-app.post('/create', (req:Request, res:Response):void=>{
-    const {
-        email,
-        username,
-        fname,
-        lname,
-        password
-    } = req.query;
-    console.log(req.query);
-    
-    res.status(200).json({
-        email:email,
-        user:username,
-        firstname:fname,
-        lastname:lname,
-        password:password
-    })
-})
+// Use the usersRouter handler/middleware
+app.use('/', usersRouter)
 
 
 
-
-app.get('/', (req:Request, res:Response):void=>{
-    
+app.get('/', (req:Request, res:Response):void=>{    
     // you could send json object to the client
     res.status(200).json({
     message:"Hello world"
     });
-    
-
-    // ########################################
-
-    // you can send an entire page to the user
-    // res.send(`<html>
-    // <title>From server to client</title>
-    // <body>
-    // <h1>This page is sent to the client via the server</h1>
-    // </body>
-    // </html>`)
 });
 
 
